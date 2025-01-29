@@ -1,0 +1,4 @@
+<strings>
+    <string id="AppName">ScoreWidget</string>
+    <string id="GlanceText" scope="glance">Text here</string>
+</strings>

@@ -1,0 +1,29 @@
+[
+    {
+        "team": "Opponent2",
+        "year": 2026,
+        "month": 7,
+        "day": 29,
+        "hour": 12,
+        "min": 30,
+        "home": true
+    },
+    {
+        "team": "Opponent1",
+        "year": 2026,
+        "month": 11,
+        "day": 29,
+        "hour": 9,
+        "min": 30,
+        "home": true
+    },
+    {
+        "team": "Opponent3",
+        "year": 2026,
+        "month": 12,
+        "day": 15,
+        "hour": 13,
+        "min": 45,
+        "home": true
+    }
+]

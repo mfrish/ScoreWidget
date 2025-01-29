@@ -1,0 +1,6 @@
+<resources>
+    <jsonData id="leagueScheduleFile" filename="json/leagueSchedule.json"/>
+    <jsonData id="cupComp1ScheduleFile" filename="json/cupCompetition1Schedule.json"/>
+    <jsonData id="cupComp2ScheduleFile" filename="json/cupCompetition2Schedule.json"/>
+    <jsonData id="nicknames" filename="json/nicknames.json"/>
+</resources>

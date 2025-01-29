@@ -1,0 +1,11 @@
+<drawables>
+    <bitmap id="LauncherIcon" filename="icon.png" />
+    <bitmap id="Crest" filename="crest.png" />
+    <bitmap id="League" filename="league.png" />
+    <bitmap id="CupComp1" filename="cupComp1.png" />
+    <bitmap id="CupComp2" filename="cupComp2.png" />
+    <bitmap id="LeagueTextBackground" filename="leagueTextBackground.png" />
+    <bitmap id="CupComp1TextBackground" filename="cupComp1TextBackground.png" />
+    <bitmap id="CupComp2TextBackground" filename="cupComp2TextBackground.png" />
+    <bitmap id="LargeImage" filename="largeImage.png" />
+</drawables>
