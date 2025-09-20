@@ -3,48 +3,47 @@ import Toybox.WatchUi;
 
 class GenericCarouselDelegate extends GenericBehaviorDelegate {
     var carouselVisible;
-    var currentView;
-    var carouselStackHeight = 0;
+    var currentViewArray as Array<View or GenericCarouselView>;
+    var currentIndex as Number;
 
-    function initialize(currView, nextView, hasPrevView) {
-        GenericBehaviorDelegate.initialize(currView, nextView, hasPrevView);
+    function initialize(viewArray as Array<View or GenericCarouselView>) {
+        GenericBehaviorDelegate.initialize(viewArray);
         carouselVisible = false;
-        currentView = currView;
+        currentViewArray = viewArray;
+        currentIndex = 0;
     }
 
     function onSelect() as Boolean {
         // toggle carousel on select
-        if (carouselVisible) {
-            carouselVisible = false;
-            currentView.showCarousel = false;
-            currentView.resetCarousel();
-            currentView.clearLayers();
-            for (var i = 0; i < carouselStackHeight; i++) {
-                WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+        if (currentViewArray[currentIndex].isCarouselView) {
+            if (carouselVisible) {
+                carouselVisible = false;
+                currentViewArray[currentIndex].showCarousel = false;
+                currentViewArray[currentIndex].resetCarousel();
+                currentViewArray[currentIndex].clearLayers();
+                WatchUi.switchToView(currentViewArray[currentIndex], self, WatchUi.SLIDE_IMMEDIATE);
+            } else {
+                carouselVisible = true;
+                currentViewArray[currentIndex].showCarousel = true;
+                currentViewArray[currentIndex].clearLayers();
+                WatchUi.switchToView(currentViewArray[currentIndex], self, WatchUi.SLIDE_IMMEDIATE);
             }
-            carouselStackHeight = 0;
-            return true;
         }
 
-        carouselVisible = true;
-        currentView.showCarousel = true;
-        currentView.clearLayers();
-        carouselStackHeight++;
-        WatchUi.pushView(currentView, self, WatchUi.SLIDE_IMMEDIATE);
         return true;
     }
 
     function onNextPage() as Boolean {
         if (carouselVisible) {
-            if (!currentView.canGoToNextCarouselPage()) {
+            if (!currentViewArray[currentIndex].canGoToNextCarouselPage()) {
                 return false;
             }
 
-            currentView.goToNextCarouselPage();
+            currentViewArray[currentIndex].goToNextCarouselPage();
 
-            currentView.clearLayers();
-            carouselStackHeight++;
-            WatchUi.pushView(currentView, self, WatchUi.SLIDE_IMMEDIATE);
+            currentViewArray[currentIndex].clearLayers();
+
+            WatchUi.switchToView(currentViewArray[currentIndex], self, WatchUi.SLIDE_IMMEDIATE);
             return true;
         }
 
@@ -53,15 +52,14 @@ class GenericCarouselDelegate extends GenericBehaviorDelegate {
 
     function onPreviousPage() as Boolean {
         if (carouselVisible) {
-            if (!currentView.canGoToPreviousCarouselPage()) {
+            if (!currentViewArray[currentIndex].canGoToPreviousCarouselPage()) {
                 return false;
             }
 
-            currentView.goToPreviousCarouselPage();
+            currentViewArray[currentIndex].goToPreviousCarouselPage();
 
-            currentView.clearLayers();
-            carouselStackHeight--;
-            WatchUi.popView(SLIDE_IMMEDIATE);
+            currentViewArray[currentIndex].clearLayers();
+            WatchUi.switchToView(currentViewArray[currentIndex], self, SLIDE_IMMEDIATE);
             return true;
         }
 

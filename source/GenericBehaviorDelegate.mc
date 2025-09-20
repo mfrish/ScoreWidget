@@ -2,32 +2,32 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 
 class GenericBehaviorDelegate extends WatchUi.BehaviorDelegate {
-    var currentView;
-    var nextViewArray;
-    var hasPreviousView as Boolean;
+    var currentViewArray as Array<View>;
+    var currentIndex as Number;
     var showCarousel as Boolean;
 
-    function initialize(currView, nextView, hasPrevView) {
+    function initialize(viewArr) {
         BehaviorDelegate.initialize();
-        currentView = currView;
-        nextViewArray = nextView;
-        hasPreviousView = hasPrevView;
+        currentViewArray = viewArr;
+        currentIndex = 0;
         showCarousel = false;
     }
 
     function onNextPage() as Boolean {
-        if (nextViewArray != null) {
-            currentView.clearLayers();
-            WatchUi.pushView(nextViewArray[0], nextViewArray[1], WatchUi.SLIDE_IMMEDIATE);
+        if (currentIndex + 1 < currentViewArray.size()) {
+            currentViewArray[currentIndex].clearLayers();
+            currentIndex++;
+            WatchUi.switchToView(currentViewArray[currentIndex], self, WatchUi.SLIDE_IMMEDIATE);
             return true;
         }
         return false;
     }
 
     function onPreviousPage() as Boolean {
-        if (hasPreviousView) {
-            currentView.clearLayers();
-            WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+        if (currentIndex - 1 >= 0) {
+            currentViewArray[currentIndex].clearLayers();
+            currentIndex--;
+            WatchUi.switchToView(currentViewArray[currentIndex], self, WatchUi.SLIDE_IMMEDIATE);
             return true;
         }
         return false;

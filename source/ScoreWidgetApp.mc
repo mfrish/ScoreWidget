@@ -23,16 +23,14 @@ class ScoreWidgetApp extends Application.AppBase {
         // first views
         var firstView = new ScoreWidgetView(watchWidth, watchHeight);
         var thirdView = new PictureView(watchWidth, watchHeight);
-        var thirdViewDelegate = new GenericBehaviorDelegate(thirdView, null, thirdView);
 
         var firstViewDelegate;
         // only show the second view (next N fixtures) if there are fixtures
         if (firstView.allFixturesArray.size() > 0) {
             var secondView = new ScoreWidgetNextNView(watchWidth, watchHeight, firstView.allFixturesArray, firstView.crestBitmap);
-            var secondViewDelegate = new GenericCarouselDelegate(secondView, [thirdView, thirdViewDelegate], firstView);
-            firstViewDelegate = new GenericCarouselDelegate(firstView, [secondView, secondViewDelegate], null);
+            firstViewDelegate = new GenericCarouselDelegate([firstView, secondView, thirdView]);
         } else {
-            firstViewDelegate = new GenericBehaviorDelegate(firstView, [thirdView, thirdViewDelegate], null);
+            firstViewDelegate = new GenericBehaviorDelegate([firstView, thirdView]);
         }
 
         return [ firstView, firstViewDelegate ] as Array<Views or InputDelegates>?;

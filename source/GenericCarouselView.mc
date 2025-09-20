@@ -3,6 +3,7 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 
 class GenericCarouselView extends WatchUi.View {
+    var isCarouselView as Boolean = true;
     var showCarousel as Boolean = false;
     var maxPagesInCarousel as Number = 8;
     var currentCarouselIndex as Number = 0;
