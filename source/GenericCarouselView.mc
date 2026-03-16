@@ -3,7 +3,7 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 
 class GenericCarouselView extends WatchUi.View {
-    var isCarouselView as Boolean = true;
+    var isCarouselView as Boolean;
     var showCarousel as Boolean = false;
     var maxPagesInCarousel as Number = 8;
     var currentCarouselIndex as Number = 0;
@@ -17,10 +17,11 @@ class GenericCarouselView extends WatchUi.View {
     var iconSelectedLengthY as Number = 8;
     var spacing as Number = 6;
 
-    function initialize(numOfPagesInput as Number) {
+    function initialize(numOfPagesInput as Number, isCarouselViewInput as Boolean) {
         View.initialize();
 
         numOfPages = numOfPagesInput;
+        isCarouselView = isCarouselViewInput;
     }
 
     function drawCarousel(dc as Dc) {

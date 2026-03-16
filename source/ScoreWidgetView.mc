@@ -32,7 +32,7 @@ class ScoreWidgetView extends GenericCarouselView {
             nicknames,
             fixtureSize);
 
-        GenericCarouselView.initialize(allFixturesArray.size() < fixtureSize ? allFixturesArray.size() : fixtureSize);
+        GenericCarouselView.initialize(allFixturesArray.size() < fixtureSize ? allFixturesArray.size() : fixtureSize, true);
     }
 
     function onLayout(dc as Dc) as Void {

@@ -30,7 +30,7 @@ class ScoreWidgetNextNView extends GenericCarouselView {
         watchWidth = watchWidthInput;
         watchHeight = watchHeightInput;
         numOfPages = Math.ceil(fixtureListInput.size() / maxFixturesPerPage.toFloat()).toNumber();
-        GenericCarouselView.initialize(numOfPages);
+        GenericCarouselView.initialize(numOfPages, true);
 
         _backgroundLayer = new WatchUi.Layer({:x=>0, :y=>0, :width=>watchWidth, :height=>watchHeight});
         _foregroundLayer = new WatchUi.Layer({:x=>0, :y=>0, :width=>watchWidth, :height=>watchHeight});

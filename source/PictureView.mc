@@ -7,7 +7,7 @@ class PictureView extends GenericCarouselView {
     var pictureBitmap as BitmapResource;
 
     function initialize(watchWidth as Number, watchHeight as Number) {
-        GenericCarouselView.initialize(1);
+        GenericCarouselView.initialize(1, false);
         _backgroundLayer = new WatchUi.Layer({:x=>0, :y=>0, :width=>watchWidth, :height=>watchHeight});
         pictureBitmap = Application.loadResource($.Rez.Drawables.LargeImage);
     }
