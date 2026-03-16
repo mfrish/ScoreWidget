@@ -16,7 +16,7 @@ class TimeHelper {
             if (hourOffset > 0) {
                 dayValue--;
             }
-            hourValue = hourOffset.abs();
+            hourValue = (24 - hourOffset) % 24;
         }
 
         var time = {

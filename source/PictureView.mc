@@ -2,13 +2,12 @@ import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.WatchUi;
 
-class PictureView extends WatchUi.View {
+class PictureView extends GenericCarouselView {
     var _backgroundLayer;
     var pictureBitmap as BitmapResource;
 
     function initialize(watchWidth as Number, watchHeight as Number) {
-        View.initialize();
-
+        GenericCarouselView.initialize(1);
         _backgroundLayer = new WatchUi.Layer({:x=>0, :y=>0, :width=>watchWidth, :height=>watchHeight});
         pictureBitmap = Application.loadResource($.Rez.Drawables.LargeImage);
     }

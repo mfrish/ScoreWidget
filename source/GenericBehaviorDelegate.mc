@@ -2,7 +2,7 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 
 class GenericBehaviorDelegate extends WatchUi.BehaviorDelegate {
-    var currentViewArray as Array<View>;
+    var currentViewArray as Array<GenericCarouselDelegate>;
     var currentIndex as Number;
     var showCarousel as Boolean;
 

@@ -59,7 +59,7 @@ class GenericCarouselDelegate extends GenericBehaviorDelegate {
             currentViewArray[currentIndex].goToPreviousCarouselPage();
 
             currentViewArray[currentIndex].clearLayers();
-            WatchUi.switchToView(currentViewArray[currentIndex], self, SLIDE_IMMEDIATE);
+            WatchUi.switchToView(currentViewArray[currentIndex], self, WatchUi.SLIDE_IMMEDIATE);
             return true;
         }
 

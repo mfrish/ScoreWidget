@@ -59,11 +59,13 @@ class ScoreWidgetView extends GenericCarouselView {
 
         var nextFixture = allFixturesArray[currentPage] as Fixture;
 
+        // clear the current background
+        backgroundDc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+        backgroundDc.clear();
+
         // draw competition in background
         var compBitmap = getCompetitionBitmap(nextFixture);
         if (compBitmap != null) {
-            backgroundDc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-            backgroundDc.clear();
             backgroundDc.drawBitmap(0, 0, compBitmap);
         }
 
