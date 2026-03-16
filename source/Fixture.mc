@@ -31,12 +31,12 @@ class Fixture {
 
     function getDayString() {
         var day = dateShort.day;
-        if (day == 1) {
-            return "1st";
-        } else if (day == 2) {
-            return "2nd";
-        } else if (day == 3) {
-            return "3rd";
+        if (day % 10 == 1 && day != 11) {
+            return day + "st";
+        } else if (day % 10 == 2 && day != 12) {
+            return day + "nd";
+        } else if (day % 10 == 3 && day != 13) {
+            return day + "rd";
         }
         return day + "th";
     }
