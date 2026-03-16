@@ -8,15 +8,13 @@ class ScoreWidgetView extends GenericCarouselView {
     var _backgroundLayer;
     var _foregroundLayer;
 
-    const fixtureSize as Number = 5;
-
     var crestBitmap as BitmapResource;
     var leagueBitmap as BitmapResource;
     var cupComp1Bitmap as BitmapResource;
     var cupComp2Bitmap as BitmapResource;
     var allFixturesArray as Array<Fixture>;
 
-    function initialize(watchWidth as Number, watchHeight as Number) {
+    function initialize(watchWidth as Number, watchHeight as Number, fixtureSize as Number) {
         _backgroundLayer = new WatchUi.Layer({:x=>0, :y=>0, :width=>watchWidth, :height=>watchHeight});
         _foregroundLayer = new WatchUi.Layer({:x=>0, :y=>0, :width=>watchWidth, :height=>watchHeight});
 
@@ -31,7 +29,8 @@ class ScoreWidgetView extends GenericCarouselView {
         allFixturesArray = Fixture.getNextFixtures(
             [leagueScheduleArray, cupComp1ScheduleArray, cupComp2ScheduleArray],
             [LEAGUE, CUPCOMP1, CUPCOMP2],
-            nicknames);
+            nicknames,
+            fixtureSize);
 
         GenericCarouselView.initialize(allFixturesArray.size() < fixtureSize ? allFixturesArray.size() : fixtureSize);
     }

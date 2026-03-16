@@ -9,6 +9,8 @@ class ScoreWidgetApp extends Application.AppBase {
     const watchWidth = 260;
     const watchHeight = 260;
 
+    const fixtureSize as Number = 5;
+
     function initialize() {
         AppBase.initialize();
     }
@@ -19,21 +21,21 @@ class ScoreWidgetApp extends Application.AppBase {
     function onStop(state as Dictionary?) as Void {
     }
 
-    function getInitialView() as Array<Views or InputDelegates>? {
+    function getInitialView() as [Views] or [Views, InputDelegates] {
         // first views
-        var firstView = new ScoreWidgetView(watchWidth, watchHeight);
+        var firstView = new ScoreWidgetView(watchWidth, watchHeight, fixtureSize);
         var thirdView = new PictureView(watchWidth, watchHeight);
 
         var firstViewDelegate;
         // only show the second view (next N fixtures) if there are fixtures
         if (firstView.allFixturesArray.size() > 0) {
-            var secondView = new ScoreWidgetNextNView(watchWidth, watchHeight, firstView.allFixturesArray, firstView.crestBitmap);
+            var secondView = new ScoreWidgetNextNView(watchWidth, watchHeight, firstView.allFixturesArray.slice(0, fixtureSize), firstView.crestBitmap);
             firstViewDelegate = new GenericCarouselDelegate([firstView, secondView, thirdView]);
         } else {
             firstViewDelegate = new GenericBehaviorDelegate([firstView, thirdView]);
         }
 
-        return [ firstView, firstViewDelegate ] as Array<Views or InputDelegates>?;
+        return [ firstView, firstViewDelegate ];
     }
 
     (:glance)

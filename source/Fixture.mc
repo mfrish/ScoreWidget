@@ -90,7 +90,8 @@ class Fixture {
     static function getNextFixtures(
         competitionArray as Array<Array<Fixture>>,
         compEnumArray as Array<Number>,
-        nicknames
+        nicknames,
+        fixtureSize as Number
         ) as Array<Fixture> {
         var nextN = [] as Array<Fixture>;
 
@@ -100,7 +101,7 @@ class Fixture {
             nextIndexArray.add(getNextFixtureIndex(competitionArray[i], now));
         }
 
-        while (true) {
+        for (var i = 0; i < fixtureSize; i++) {
             var nextFixture = null;
             var nextMoment = null;
             var nextComp = null;
@@ -127,7 +128,7 @@ class Fixture {
             }
             
             if (nextMoment == null) {
-                return nextN;
+                break;
             }
 
             nextIndexArray[nextCompIndex]++;
